@@ -11,8 +11,18 @@ export const useAllMovies = (): IRatedMovie[] => {
   // TODO: associate movies with votes
   // state contains movies and votes in separate properties,
   // join them and return an IRatedMovie array
+  
+  const movies = state.movies as Movie[];
+  const votes = state.votes?? 0;
 
-  const movies = state.movies as IRatedMovie[]; // not valid: replace
+  const ratedMovies: IRatedMovie[] = movies.map((movie, index) => {
+    return {
+      ...movie,
 
-  return movies;
+    
+        votes:votes[index],
+    };
+  });
+
+  return ratedMovies;
 };
