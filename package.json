@@ -1,0 +1,52 @@
+{
+  "name": "movie-rater-react",
+  "version": "1.0.0",
+  "description": "Vote your favorite movies",
+  "engines": {
+    "node": ">= 16"
+  },
+  "scripts": {
+    "prestart": "msw init dist/ --save",
+    "start": "parcel src/index.html",
+    "lint": "eslint --ext .js --ext .ts --ext .tsx src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.intesys.it/recruting/frontend-test-movie-rater-react.git"
+  },
+  "author": "Intesys",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.4.1",
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.6",
+    "@typescript-eslint/eslint-plugin": "^5.61.0",
+    "@typescript-eslint/parser": "^5.61.0",
+    "eslint": "^8.44.0",
+    "eslint-plugin-react": "^7.25.3",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "msw": "^1.2.2",
+    "parcel": "^2.0.1",
+    "prettier": "^3.0.0",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "@chakra-ui/icons": "^2.0.19",
+    "@chakra-ui/react": "^2.7.1",
+    "@emotion/react": "^11.7.0",
+    "@emotion/styled": "^11.6.0",
+    "axios": "^1.4.0",
+    "framer-motion": "^10.12.18",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "msw": {
+    "workerDirectory": "dist"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  }
+}
