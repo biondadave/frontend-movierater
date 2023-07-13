@@ -7,7 +7,7 @@ import {
   Radio,
   RadioGroup,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import { useGoTo } from "../../lib/globalState/mutations/useGoTo";
 import { useVote } from "../../lib/globalState/mutations/useVote";
 import { useRandomMovies } from "../../lib/globalState/selectors/useRandomMovies";
@@ -18,17 +18,24 @@ export const Vote: React.FC = () => {
   const movies = useRandomMovies();
   const [value, select, vote] = useVote();
   const goTo = useGoTo();
+  const [isMovieSelected, setIsMovieSelected] = useState(false);
 
-  // TODO: Allow voting only after selecting a movie
+  const handleSelect = (selectedMovieId) => {
+    select(selectedMovieId);
+    setIsMovieSelected(true);
+  };
+
   const voteAndGo = () => {
-    vote();
-    goTo(State.dashboard);
+    if (isMovieSelected) {
+      vote();
+      goTo(State.dashboard);
+    }
   };
 
   return (
     <Box>
       <Title>Qual'è il migliore tra:</Title>
-      <RadioGroup onChange={select} value={value}>
+      <RadioGroup onChange={handleSelect} value={value}>
         <List>
           {movies.map((movie) => (
             <ListItem py={2} key={movie.id}>
@@ -42,7 +49,7 @@ export const Vote: React.FC = () => {
           ))}
         </List>
       </RadioGroup>
-      <Button onClick={voteAndGo} mt={5}>
+      <Button onClick={voteAndGo} mt={5} disabled={!isMovieSelected}>
         Vota
       </Button>
     </Box>
