@@ -1,4 +1,5 @@
 import { useGlobalState } from "../GlobalStateContext";
+import { useMemo } from "react";
 
 /**
  * Return 2 random movies
@@ -6,7 +7,11 @@ import { useGlobalState } from "../GlobalStateContext";
 export const useRandomMovies = () => {
   const { state } = useGlobalState();
 
-  // TODO: return only 2 random movies (use useMemo)
+  const randomMovies = useMemo(() => {
+    const movies = state.movies;
+    const shuffledMovies = movies.sort(() => Math.random() - 0.5);
+    return shuffledMovies.slice(0, 2);
+  }, [state.movies]);
 
-  return state.movies;
+  return randomMovies;
 };
