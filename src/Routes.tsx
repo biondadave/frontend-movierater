@@ -4,6 +4,7 @@ import { Vote } from "./components/vote/Vote";
 import { useGlobalState } from "./lib/globalState/GlobalStateContext";
 import { useLoadMovies } from "./lib/globalState/mutations/useLoadMovies";
 import { State } from "./lib/globalState/types";
+import { TopTen } from "./components/dashboard/TopTen";
 
 export const Routes: React.FC = () => {
   const { state } = useGlobalState();
@@ -15,6 +16,8 @@ export const Routes: React.FC = () => {
   switch (state.current) {
     case State.vote:
       return <Vote />;
+    case State.topTen:
+      return <TopTen />;
     case State.dashboard:
     default:
       return <Dashboard />;

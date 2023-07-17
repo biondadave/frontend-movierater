@@ -13,14 +13,14 @@ export const useAllMovies = (): IRatedMovie[] => {
   // join them and return an IRatedMovie array
   
   const movies = state.movies as Movie[];
-  const votes = state.votes?? 0;
+  const votes = state.votes; 
 
   const ratedMovies: IRatedMovie[] = movies.map((movie, index) => {
     return {
       ...movie,
 
-    
-        votes:votes[index],
+      
+        votes: votes[index],
     };
   });
 

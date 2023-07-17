@@ -4,6 +4,7 @@ import { actions } from "./actions";
 export enum State {
   dashboard,
   vote,
+  topTen,
   // TODO: Task 7 - add error case
 }
 

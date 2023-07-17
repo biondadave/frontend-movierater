@@ -28,7 +28,7 @@ export const Vote: React.FC = () => {
   const voteAndGo = () => {
     if (isMovieSelected) {
       vote();
-      goTo(State.dashboard);
+      goTo(State.topTen);
     }
   };
 
